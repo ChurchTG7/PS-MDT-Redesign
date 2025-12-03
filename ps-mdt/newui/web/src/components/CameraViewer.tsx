@@ -5,6 +5,17 @@ import type { SecurityCamera } from '../types/api'
 import { fetchNui } from '../utils/nui'
 import withErrorBoundary from './withErrorBoundary'
 
+// Helper function to validate image URLs
+const isSafeImageUrl = (url?: string): boolean => {
+  if (!url || typeof url !== 'string') return false
+  try {
+    const u = new URL(url)
+    return ['https:', 'http:', 'data:', 'blob:'].includes(u.protocol)
+  } catch {
+    return false
+  }
+}
+
 interface CameraViewerProps {
   camera: SecurityCamera
   onClose: () => void

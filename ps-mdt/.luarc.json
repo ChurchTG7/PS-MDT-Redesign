@@ -18,7 +18,25 @@
       "QBCore",
       "Citizen",
       "Wait",
-      "CreateThread"
+      "CreateThread",
+      "AddEventHandler",
+      "GetCurrentResourceName",
+      "PlayerPedId",
+      "vector3",
+      "vector4",
+      "GetResourceState",
+      "Player",
+      "print",
+      "pcall",
+      "table",
+      "string",
+      "pairs",
+      "ipairs",
+      "type",
+      "tostring",
+      "tonumber",
+      "next",
+      "os"
     ]
   },
   "runtime": {

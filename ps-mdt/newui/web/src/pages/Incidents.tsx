@@ -727,7 +727,7 @@ export default function IncidentsPage() {
               <ErrorBoundary fullScreen={false} scopeName="CameraGrid">
                 <CameraGridSafe 
                   cameras={allCameras || []} 
-                  onCameraSelect={(camera) => setSelectedCamera(camera)}
+                  onCameraSelect={(camera: SecurityCamera) => setSelectedCamera(camera)}
                 />
               </ErrorBoundary>
             )}

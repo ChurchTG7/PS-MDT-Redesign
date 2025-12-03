@@ -6,7 +6,8 @@ interface Options {
   fullScreen?: boolean
 }
 
-export default function withErrorBoundary<P extends Record<string, unknown>>(Component: React.ComponentType<P>, options: Options = {}) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export default function withErrorBoundary<P extends object = any>(Component: React.ComponentType<P>, options: Options = {}) {
   const { scopeName, fullScreen = false } = options
   const Wrapped: React.FC<P> = (props) => (
     <ErrorBoundary fullScreen={fullScreen} scopeName={scopeName}>

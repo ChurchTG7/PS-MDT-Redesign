@@ -10,6 +10,13 @@ import { fetchNui } from '../utils/nui'
 import { useNuiListener, useFetchNui, useAutoRefresh, useRealtimeUpdate } from '../utils/hooks'
 import { useAppStore } from '../store/useAppStore'
 
+// Helper function to escape HTML in tooltips to prevent XSS
+const escapeHtml = (text: string): string => {
+  const div = document.createElement('div')
+  div.textContent = text
+  return div.innerHTML
+}
+
 interface DispatchCall {
   id: string
   message: string

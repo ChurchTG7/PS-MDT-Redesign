@@ -1233,7 +1233,7 @@ export default function ProfilePage() {
         <VehicleLinkerSafe
           isOpen={isVehicleLinkerOpen}
           onClose={() => setIsVehicleLinkerOpen(false)}
-          onLinkVehicle={async (vehicle) => {
+          onLinkVehicle={async (vehicle: VehicleInfo) => {
             try {
               const response = await fetchNui('linkVehicleToProfile', {
                 citizenid: selectedProfile.data.citizenid,

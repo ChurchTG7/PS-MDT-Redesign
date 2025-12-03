@@ -1,0 +1,269 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0b1020;
+  --panel: #0f1724;
+  --muted: #94a3b8;
+  /* MDT-inspired tokens */
+  --surface-primary-rgb: 18, 25, 43;
+  --surface-secondary-rgb: 15, 23, 42;
+  --accent-rgb: 56, 189, 248;
+  --outline-rgb: 36, 72, 176;
+  
+  /* Theme colors (set dynamically by App.tsx) */
+  --theme-primary: #3b82f6;
+  --theme-secondary: #1e40af;
+  --theme-accent: #38bdf8;
+  --theme-button-highlight: #38bdf8;
+  --theme-icon: #38bdf8;
+  --theme-border: #2448b0;
+  --theme-primary-rgb: 59, 130, 246;
+  --theme-secondary-rgb: 30, 64, 175;
+  --theme-accent-rgb: 56, 189, 248;
+  --theme-button-highlight-rgb: 56, 189, 248;
+  --theme-icon-rgb: 56, 189, 248;
+  --theme-border-rgb: 36, 72, 176;
+}
+
+html, body {
+  background: transparent !important;
+  @apply text-white font-sans;
+  /* Ensure proper viewport height calculation on all aspect ratios */
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+#root {
+  background: transparent;
+  height: 100%;
+  width: 100%;
+}
+
+.app-shell {
+  @apply min-h-screen p-4;
+}
+
+/* Responsive scaling utilities for different aspect ratios */
+@media (max-aspect-ratio: 16/9) {
+  /* Narrower screens (like 16:10, 4:3) - reduce horizontal spacing */
+  :root {
+    --spacing-scale: 0.85;
+  }
+}
+
+@media (min-aspect-ratio: 21/9) {
+  /* Ultra-wide screens - increase spacing */
+  :root {
+    --spacing-scale: 1.15;
+  }
+}
+
+/* Ensure text remains readable on all scales */
+@media (max-height: 720px) {
+  /* For smaller vertical resolution, scale down text slightly */
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (min-height: 1440px) {
+  /* For larger vertical resolution, scale up text slightly */
+  html {
+    font-size: 18px;
+  }
+}
+
+/* Custom Scrollbar Styling - Uses theme colors */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(var(--theme-accent-rgb), 0.3) rgba(15, 23, 42, 0.5);
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.5);
+  border-radius: 4px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: rgba(var(--theme-accent-rgb), 0.3);
+  border-radius: 4px;
+  transition: background 0.2s ease;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: rgba(var(--theme-accent-rgb), 0.5);
+}
+
+*::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Theme-aware Button Styles */
+@layer components {
+  /* Active/Selected Navigation Items */
+  .nav-item-active {
+    background-color: rgba(var(--theme-primary-rgb), 0.15) !important;
+    border-color: var(--theme-border) !important;
+  }
+  
+  /* Hover states for buttons and interactive elements */
+  .btn-hover:hover {
+    background-color: rgba(var(--theme-button-highlight-rgb), 0.1);
+    border-color: rgba(var(--theme-button-highlight-rgb), 0.5);
+  }
+  
+  /* Active icon states */
+  .icon-active {
+    color: var(--theme-icon) !important;
+  }
+  
+  /* Focus/Active border states */
+  .border-active {
+    border-color: var(--theme-border) !important;
+  }
+  
+  /* Background accent for cards/panels */
+  .bg-accent {
+    background-color: rgba(var(--theme-accent-rgb), 0.1);
+  }
+  
+  /* Theme gradient backgrounds */
+  .bg-theme-gradient {
+    background: linear-gradient(135deg, var(--theme-primary), var(--theme-secondary));
+  }
+  
+  /* Theme-colored text */
+  .text-theme-primary {
+    color: var(--theme-primary);
+  }
+  
+  .text-theme-accent {
+    color: var(--theme-accent);
+  }
+  
+  .text-theme-icon {
+    color: var(--theme-icon);
+  }
+  
+  /* Button highlight on hover */
+  .btn-theme:hover {
+    background-color: rgba(var(--theme-button-highlight-rgb), 0.2);
+    border-color: var(--theme-button-highlight);
+  }
+  
+  /* Active tab styles */
+  .tab-active {
+    background-color: rgba(var(--theme-primary-rgb), 0.2);
+    border-color: var(--theme-border);
+    color: var(--theme-accent);
+  }
+  
+  /* Loading spinner */
+  .spinner-theme {
+    color: var(--theme-icon);
+  }
+  
+  /* Icon backgrounds */
+  .icon-bg-theme {
+    background-color: rgba(var(--theme-accent-rgb), 0.2);
+  }
+  
+  /* Badge/Pill styles */
+  .badge-theme {
+    background-color: rgba(var(--theme-accent-rgb), 0.2);
+    border-color: var(--theme-border);
+    color: var(--theme-icon);
+  }
+  
+  /* Interactive card hover */
+  .card-hover-theme {
+    background-color: rgba(var(--theme-accent-rgb), 0.1);
+    border-color: rgba(var(--theme-border-rgb), 0.3);
+  }
+  
+  .card-hover-theme:hover {
+    background-color: rgba(var(--theme-accent-rgb), 0.2);
+    border-color: rgba(var(--theme-border-rgb), 0.5);
+  }
+  
+  /* Step indicators / numbered items */
+  .step-theme {
+    background-color: rgba(var(--theme-accent-rgb), 0.2);
+    border-color: var(--theme-border);
+    color: var(--theme-icon);
+  }
+}
+
+/* Ensure proper scrolling behavior and content containment */
+.overflow-auto,
+.overflow-y-auto,
+.overflow-x-auto {
+  /* Use momentum scrolling on touch devices */
+  -webkit-overflow-scrolling: touch;
+  /* Ensure content doesn't get cut off */
+  overscroll-behavior: contain;
+}
+
+/* Fix for flexbox children not shrinking properly */
+.flex-1 {
+  min-width: 0;
+  min-height: 0;
+}
+
+/* Ensure tables and large content scale properly */
+table {
+  font-size: clamp(0.75rem, 1.2vh, 1rem);
+}
+
+/* Make modals and dropdowns scale with viewport */
+.modal-content,
+.dropdown-menu {
+  max-height: 80vh;
+  max-width: 90vw;
+  overflow: auto;
+}
+
+/* Better text scaling for different resolutions */
+h1 { font-size: clamp(1.5rem, 3vh, 2.5rem); }
+h2 { font-size: clamp(1.25rem, 2.5vh, 2rem); }
+h3 { font-size: clamp(1.1rem, 2vh, 1.75rem); }
+h4 { font-size: clamp(1rem, 1.8vh, 1.5rem); }
+h5 { font-size: clamp(0.9rem, 1.5vh, 1.25rem); }
+h6 { font-size: clamp(0.85rem, 1.3vh, 1.1rem); }
+
+/* Ensure buttons maintain touch-friendly sizes */
+button,
+.btn {
+  min-height: 3.5vh;
+  min-width: 3.5vh;
+  font-size: clamp(0.75rem, 1.2vh, 1rem);
+}
+
+/* Make input fields responsive */
+input,
+textarea,
+select {
+  font-size: clamp(0.875rem, 1.3vh, 1rem);
+  min-height: 3vh;
+}
+
+/* Responsive spacing for cards and panels */
+.card,
+.panel {
+  padding: clamp(0.75rem, 1.5vh, 2rem);
+  border-radius: clamp(0.5rem, 1vh, 1.5rem);
+}
+
+/* Fix for content getting cut off in overflow containers */
+.overflow-hidden {
+  min-width: 0;
+  min-height: 0;
+}

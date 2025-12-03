@@ -1,0 +1,27 @@
+{
+  "diagnostics": {
+    "globals": [
+      "Config",
+      "SendNUIMessage",
+      "RegisterNUICallback",
+      "RegisterNetEvent",
+      "TriggerServerEvent",
+      "TriggerClientEvent",
+      "GetPlayerPed",
+      "GetEntityCoords",
+      "SetNuiFocus",
+      "SetTimeout",
+      "exports",
+      "MySQL",
+      "source",
+      "json",
+      "QBCore",
+      "Citizen",
+      "Wait",
+      "CreateThread"
+    ]
+  },
+  "runtime": {
+    "version": "Lua 5.4"
+  }
+}
